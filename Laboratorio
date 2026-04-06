@@ -1,0 +1,209 @@
+<form>
+  <fieldset>
+    <legend><b>Datos del Solicitante</b></legend>
+
+    <label for="nombre">Nombre completo: </label>
+    <input type="text" id="nombre" name="nombre"
+       placeholder="ej: Paula Sosa"
+       maxlength="50"
+       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+       required><br><br>
+
+    <label for="correo">Email institucional: </label>
+    <input type="email" id="correo" name="correo"
+       placeholder="usuario@ejemplo.com"
+       required><br><br>
+
+    <label for="tel">Telefono interno o celular: </label>
+    <input type="tel" id="tel" name="tel"
+       pattern="[+]?[0-9 -]{7,15}"
+       placeholder="+54 351 ..."><br><br>
+      
+    <label>Rol:</label>
+
+    <label>
+      <input type="radio" name="rol" value="pt" required> Profesor titular
+    </label>
+
+    <label>
+      <input type="radio" name="rol" value="pa"> Profesor adjunto
+    </label>
+
+    <label>
+      <input type="radio" name="rol" value="jt"> Jefe de trabajos prácticos
+    </label>
+
+    <label>
+      <input type="radio" name="rol" value="ac"> Ayudante de cátedra
+    </label>
+
+    <br><br>
+    
+    <label for="materia">Catedra o materia: </label>
+    <input type="text"
+      id="materia"
+      name="materia"
+
+      list="materias"
+      placeholder="Escribí..."
+      required>
+
+    <datalist id="materias">
+    <option value="Algebra y Geometría Analítica ">
+    <option value="Física 1 ">
+    <option value="Análisis Matemático 1">
+    <option value="Logica y Estructuras Discretas ">
+    <option value="Algoritmos y Estructuras de Datos">
+    <option value="Arquitectura de Computadoras">
+    </datalist>
+
+
+
+  </fieldset>
+
+  <fieldset>
+    <legend><b>Datos de la Reserva</b></legend>
+
+    <label for="prov">Laboratorio:</label>
+    <select id="prov" name="provincia"
+        required>
+
+  <option value="">-- Seleccione --</option>
+  <optgroup label="Planta baja">
+    <option value="l1">Lab 1</option>
+    <option value="l2">Lab 2</option>
+  </optgroup>
+  <optgroup label="Primer piso">
+    <option value="l3">Lab 3</option>
+    <option value="l4">Lab 4</option>
+  </optgroup>
+  <optgroup label="Segundo piso">
+    <option value="l5">Lab 5</option>
+    <option value="l6">Lab 6</option>
+  </optgroup>
+  </select><br><br>
+  
+  <label for="reserva">Fecha de la reserva</label>
+  <input type="date" id="reserva" name="reserva"
+       min="2026-04-10"
+       required><br><br>
+  <label for="hora">Hora de inicio</label>
+  <input type="time" id="hora" name="hora"
+       min="08:00" max="22:00"
+       required><br><br>
+  <label for="horafin">Hora fin</label>
+  <input type="time" id="horafin" name="horafin"
+       min="08:00" max="22:00"
+       required><br><br>
+
+  <label>Tipo de actividad:
+    <br><input type="radio"
+           name="nivel"
+           value="clase_practica" required> Clase practica
+  </label>
+  <label>
+    <input type="radio"
+           name="nivel"
+           value="examen"> Examen
+  </label>
+  <label>
+    <input type="radio"
+           name="nivel"
+           value="evento"> Evento
+  </label>
+  <label>
+    <input type="radio"
+           name="nivel"
+           value="taller" > Taller
+  </label><br><br>
+
+  <label for="asistentes">Cantidad estimada de asistentes: </label>
+  <input type="number" id="asistentes" name="asistentes"
+       min="1" max="60" 
+       placeholder="Entre 1 y 60"
+       required><br><br>
+
+  <label>
+    <input type="checkbox"
+           name="recurrencia"
+           value="reserva" checked> Reserva recurrente (semanal)
+  </label>
+
+  </fieldset>
+
+  <fieldset>
+    <legend><b>Requerimientos Tecnicos</b></legend>
+    <label>
+  <input type="checkbox" name="proyector" value="si"> Necesita proyector
+  </label><br><br>
+
+  <label>Software necesario: 
+    <br><input type="checkbox"
+           name="software[]"
+           value="code" checked> VS Code
+  </label>
+  <label>
+    <input type="checkbox"
+           name="software[]"
+           value="idea"> IntelliJ IDEA
+  </label>
+  <label>
+    <input type="checkbox"
+           name="software[]"
+           value="mysql"> MySQL Workbench
+  </label>
+  <label>
+    <input type="checkbox"
+           name="software[]"
+           value="node">  Node.js
+  </label>
+  <label>
+    <input type="checkbox"
+           name="software[]"
+           value="docker">  Docker
+  </label>
+  <label>
+      <input type="checkbox" name="software[]" value="otro"
+       onchange="otroInput.disabled = !this.checked"> Otro: 
+  </label>
+  <input type="text" id="otroInput" name="otro_software"
+       placeholder="Especificar..."
+       disabled>
+  <br><br>
+
+  <label for="prioridad">Nivel de prioridad de la reserva:
+  <br><input type="range" id="prioridad"
+      name="prioridad"
+      min="1" max="5" value="3"
+      oninput="out.value = this.value">
+  <output id="out">3</output></label><br>
+
+  <label for="mensaje">Observaciones adicionales</label>
+    <textarea
+    id="mensaje"
+    name="mensaje"
+    rows="5" cols="40"
+    placeholder="Escriba aquí..."
+    maxlength="400"
+    ></textarea>
+
+  </fieldset>
+
+  <fieldset>
+    <legend><b>Confirmacion</b></legend>
+      <label>
+        <input 
+          type="checkbox" 
+          name="confirmacion" 
+          required
+        >
+        Confirmo que he verificado la disponibilidad del laboratorio
+      </label>
+
+  </fieldset>
+
+<button type="submit">Solicitar reserva</button>
+
+<button type="reset">Limpiar formulario</button>
+
+</form>
